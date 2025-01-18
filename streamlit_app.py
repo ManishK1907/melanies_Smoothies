@@ -26,7 +26,8 @@ if Ingredients_List:
     Ingredients_String=''
     for fruits in Ingredients_List:
         Ingredients_String += fruits + ' '
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        st.subheader(fruits+' Nutrition Value')
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+fruits)
         sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
     st.write (Ingredients_String)
 
