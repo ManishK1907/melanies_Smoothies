@@ -34,7 +34,7 @@ if Ingredients_List:
         st.subheader(search_on+' Nutrition Value')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" +search_on)
         st.write("https://my.smoothiefroot.com/api/fruit/" +search_on)
-        if response.status_code == 200:
+        if smoothiefroot_response.status_code == 200:
             try:
                 sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
             except ValueError:
