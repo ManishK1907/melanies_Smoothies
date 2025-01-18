@@ -34,11 +34,8 @@ if Ingredients_List:
         st.subheader(search_on+' Nutrition Value')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" +search_on)
         st.write("https://my.smoothiefroot.com/api/fruit/" +search_on)
-        if smoothiefroot_response.status_code == 200:
-            try:
-                sf_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-            except ValueError:
-                st.error(f"Invalid JSON response from API for {search_on}.")
+        sv_df=smoothiefroot_response.to_pandas()
+        sf_df=st.dataframe(data=sv_df.json(), use_container_width=True)
     st.write (Ingredients_String)
 
     my_insert_stmt=""" insert into smoothies.public.orders(ingredients,name_on_order) 
